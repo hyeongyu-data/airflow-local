@@ -808,3 +808,276 @@ NameError: name '_print' is not defined. Did you mean: 'print'?
 [2026-04-09T01:56:49.050+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:56:49.050+0000] {dag.py:3211} INFO - Sync 1 DAGs
 [2026-04-09T01:56:49.062+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:56:49.062+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
 [2026-04-09T01:56:49.071+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.054 seconds
+[2026-04-09T01:57:19.876+0000] {processor.py:186} INFO - Started process (PID=10145) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:57:19.877+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T01:57:19.880+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:57:19.880+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:57:19.892+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:57:19.909+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:57:19.909+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T01:57:19.919+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:57:19.919+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T01:57:19.926+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.056 seconds
+[2026-04-09T01:57:50.732+0000] {processor.py:186} INFO - Started process (PID=10210) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:57:50.733+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T01:57:50.737+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:57:50.737+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:57:50.749+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:57:50.761+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:57:50.761+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T01:57:50.771+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:57:50.771+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T01:57:50.778+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.052 seconds
+[2026-04-09T01:58:21.631+0000] {processor.py:186} INFO - Started process (PID=10276) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:58:21.632+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T01:58:21.635+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:58:21.634+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:58:21.645+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:58:21.657+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:58:21.657+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T01:58:21.666+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:58:21.666+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T01:58:21.672+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.047 seconds
+[2026-04-09T01:58:52.469+0000] {processor.py:186} INFO - Started process (PID=10342) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:58:52.471+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T01:58:52.474+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:58:52.474+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:58:52.484+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:58:52.495+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:58:52.495+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T01:58:52.506+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:58:52.506+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T01:58:52.513+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.051 seconds
+[2026-04-09T01:59:23.351+0000] {processor.py:186} INFO - Started process (PID=10408) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:59:23.352+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T01:59:23.355+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:59:23.355+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:59:23.365+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:59:23.380+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:59:23.380+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T01:59:23.390+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:59:23.389+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T01:59:23.396+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.052 seconds
+[2026-04-09T01:59:54.155+0000] {processor.py:186} INFO - Started process (PID=10474) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:59:54.157+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T01:59:54.162+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:59:54.161+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:59:54.173+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T01:59:54.187+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:59:54.187+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T01:59:54.198+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:59:54.197+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T01:59:54.204+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.055 seconds
+[2026-04-09T02:00:24.942+0000] {processor.py:186} INFO - Started process (PID=10540) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:00:24.944+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:00:24.947+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:00:24.947+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:00:24.961+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:00:24.977+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:00:24.977+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:00:24.986+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:00:24.986+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:00:24.992+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.056 seconds
+[2026-04-09T02:00:55.728+0000] {processor.py:186} INFO - Started process (PID=10606) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:00:55.729+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:00:55.732+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:00:55.732+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:00:55.742+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:00:55.754+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:00:55.754+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:00:55.767+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:00:55.767+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:00:55.773+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.051 seconds
+[2026-04-09T02:01:26.545+0000] {processor.py:186} INFO - Started process (PID=10672) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:01:26.547+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:01:26.550+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:01:26.550+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:01:26.560+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:01:26.573+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:01:26.573+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:01:26.583+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:01:26.583+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:01:26.589+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.050 seconds
+[2026-04-09T02:01:57.334+0000] {processor.py:186} INFO - Started process (PID=10738) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:01:57.335+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:01:57.339+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:01:57.339+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:01:57.349+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:01:57.362+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:01:57.362+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:01:57.372+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:01:57.372+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:01:57.378+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.052 seconds
+[2026-04-09T02:02:28.262+0000] {processor.py:186} INFO - Started process (PID=10804) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:02:28.264+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:02:28.267+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:02:28.267+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:02:28.281+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:02:28.297+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:02:28.297+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:02:28.308+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:02:28.308+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:02:28.315+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.061 seconds
+[2026-04-09T02:03:00.908+0000] {processor.py:186} INFO - Started process (PID=10870) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:03:00.909+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:03:00.911+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:03:00.911+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:03:00.919+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:03:00.937+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:03:00.937+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:03:00.948+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:03:00.948+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:03:00.965+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.063 seconds
+[2026-04-09T02:03:53.569+0000] {processor.py:186} INFO - Started process (PID=10937) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:03:53.570+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:03:53.573+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:03:53.573+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:03:53.585+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:03:53.598+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:03:53.598+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:03:53.608+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:03:53.608+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:03:53.617+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.052 seconds
+[2026-04-09T02:04:24.473+0000] {processor.py:186} INFO - Started process (PID=11003) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:04:24.474+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:04:24.476+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:04:24.476+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:04:24.486+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:04:24.502+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:04:24.502+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:04:24.511+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:04:24.511+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:04:24.523+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.055 seconds
+[2026-04-09T02:08:49.868+0000] {processor.py:186} INFO - Started process (PID=11069) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:08:49.869+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:08:49.872+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:08:49.871+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:08:49.887+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:08:49.901+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:08:49.900+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:08:49.916+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:08:49.916+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:08:49.928+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.064 seconds
+[2026-04-09T02:09:20.699+0000] {processor.py:186} INFO - Started process (PID=11135) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:09:20.700+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:09:20.701+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:09:20.701+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:09:20.709+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:09:20.723+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:09:20.722+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:09:20.734+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:09:20.734+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:09:20.746+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.049 seconds
+[2026-04-09T02:09:51.555+0000] {processor.py:186} INFO - Started process (PID=11201) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:09:51.555+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:09:51.557+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:09:51.557+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:09:51.565+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:09:51.578+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:09:51.578+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:09:51.588+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:09:51.588+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:09:51.598+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.046 seconds
+[2026-04-09T02:10:22.366+0000] {processor.py:186} INFO - Started process (PID=11268) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:10:22.367+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:10:22.370+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:10:22.370+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:10:22.381+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:10:22.394+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:10:22.393+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:10:22.404+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:10:22.404+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:10:22.414+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.053 seconds
+[2026-04-09T02:10:53.157+0000] {processor.py:186} INFO - Started process (PID=11334) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:10:53.158+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:10:53.161+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:10:53.161+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:10:53.173+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:10:53.187+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:10:53.187+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:10:53.199+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:10:53.199+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:10:53.210+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.057 seconds
+[2026-04-09T02:11:23.982+0000] {processor.py:186} INFO - Started process (PID=11400) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:11:23.983+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:11:23.986+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:11:23.985+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:11:23.997+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:11:24.012+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:11:24.012+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:11:24.023+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:11:24.023+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:11:24.032+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.055 seconds
+[2026-04-09T02:11:54.783+0000] {processor.py:186} INFO - Started process (PID=11466) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:11:54.783+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:11:54.788+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:11:54.788+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:11:54.797+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:11:54.811+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:11:54.811+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:11:54.822+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:11:54.822+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:11:54.833+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.055 seconds
+[2026-04-09T02:12:25.594+0000] {processor.py:186} INFO - Started process (PID=11532) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:12:25.595+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:12:25.598+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:12:25.597+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:12:25.608+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:12:25.624+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:12:25.624+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:12:25.636+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:12:25.636+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:12:25.646+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.058 seconds
+[2026-04-09T02:12:56.427+0000] {processor.py:186} INFO - Started process (PID=11598) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:12:56.429+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:12:56.432+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:12:56.431+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:12:56.441+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:12:56.458+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:12:56.457+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:12:56.470+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:12:56.470+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:12:56.481+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.058 seconds
+[2026-04-09T02:13:27.381+0000] {processor.py:186} INFO - Started process (PID=11670) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:13:27.382+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:13:27.386+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:13:27.385+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:13:27.396+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:13:27.413+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:13:27.413+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:13:27.423+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:13:27.423+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:13:27.433+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.059 seconds
+[2026-04-09T02:13:58.173+0000] {processor.py:186} INFO - Started process (PID=11736) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:13:58.174+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:13:58.179+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:13:58.179+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:13:58.192+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:13:58.204+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:13:58.204+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:13:58.217+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:13:58.216+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:13:58.226+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.060 seconds
+[2026-04-09T02:14:29.013+0000] {processor.py:186} INFO - Started process (PID=11802) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:14:29.014+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:14:29.017+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:14:29.016+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:14:29.030+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:14:29.046+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:14:29.046+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:14:29.057+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:14:29.057+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:14:29.066+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.060 seconds
+[2026-04-09T02:14:59.792+0000] {processor.py:186} INFO - Started process (PID=11868) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:14:59.793+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:14:59.795+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:14:59.795+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:14:59.805+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:14:59.820+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:14:59.820+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:14:59.833+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:14:59.833+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:14:59.842+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.058 seconds
+[2026-04-09T02:15:30.723+0000] {processor.py:186} INFO - Started process (PID=11934) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:15:30.724+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:15:30.728+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:15:30.728+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:15:30.738+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:15:30.749+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:15:30.749+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:15:30.762+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:15:30.762+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:15:30.771+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.056 seconds
+[2026-04-09T02:16:01.667+0000] {processor.py:186} INFO - Started process (PID=12001) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:16:01.668+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:16:01.671+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:16:01.671+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:16:01.680+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:16:01.698+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:16:01.698+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:16:01.709+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:16:01.708+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:16:01.719+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.059 seconds
+[2026-04-09T02:16:32.474+0000] {processor.py:186} INFO - Started process (PID=12067) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:16:32.476+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:16:32.479+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:16:32.479+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:16:32.493+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:16:32.507+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:16:32.507+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:16:32.520+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:16:32.520+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:16:32.530+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.062 seconds
+[2026-04-09T02:17:03.302+0000] {processor.py:186} INFO - Started process (PID=12133) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:17:03.303+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:17:03.305+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:17:03.305+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:17:03.315+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:17:03.328+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:17:03.328+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:17:03.340+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:17:03.340+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:17:03.351+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.056 seconds
+[2026-04-09T02:17:34.159+0000] {processor.py:186} INFO - Started process (PID=12200) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:17:34.160+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:17:34.162+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:17:34.162+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:17:34.173+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:17:34.184+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:17:34.184+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:17:34.199+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:17:34.199+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:17:34.209+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.055 seconds
+[2026-04-09T02:18:04.995+0000] {processor.py:186} INFO - Started process (PID=12266) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:18:04.995+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:18:04.997+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:18:04.997+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:18:05.006+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:18:05.020+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:18:05.019+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:18:05.031+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:18:05.031+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:18:05.043+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.053 seconds
+[2026-04-09T02:18:35.876+0000] {processor.py:186} INFO - Started process (PID=12333) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:18:35.877+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:18:35.880+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:18:35.880+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:18:35.888+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:18:35.903+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:18:35.903+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:18:35.915+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:18:35.915+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:18:35.926+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.056 seconds
+[2026-04-09T02:19:06.741+0000] {processor.py:186} INFO - Started process (PID=12399) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:19:06.742+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:19:06.745+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:19:06.745+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:19:06.759+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:19:06.773+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:19:06.773+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:19:06.788+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:19:06.788+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:19:06.797+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.063 seconds
+[2026-04-09T02:19:37.621+0000] {processor.py:186} INFO - Started process (PID=12465) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:19:37.623+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:19:37.626+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:19:37.626+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:19:37.643+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:19:37.660+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:19:37.660+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:19:37.673+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:19:37.673+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:19:37.684+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.069 seconds
+[2026-04-09T02:20:08.615+0000] {processor.py:186} INFO - Started process (PID=12532) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:20:08.616+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:20:08.620+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:20:08.620+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:20:08.628+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:20:08.640+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:20:08.640+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:20:08.653+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:20:08.653+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:20:08.664+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.054 seconds
+[2026-04-09T02:20:39.478+0000] {processor.py:186} INFO - Started process (PID=12598) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:20:39.480+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:20:39.482+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:20:39.482+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:20:39.491+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:20:39.506+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:20:39.506+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:20:39.520+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:20:39.520+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:20:39.533+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.057 seconds
+[2026-04-09T02:21:10.302+0000] {processor.py:186} INFO - Started process (PID=12664) to work on /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:21:10.303+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/03_basics_context_jinja.py for tasks to queue
+[2026-04-09T02:21:10.303+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:21:10.303+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:21:10.315+0000] {processor.py:925} INFO - DAG(s) '03_basics_macro_jinja' retrieved from /opt/airflow/dags/03_basics_context_jinja.py
+[2026-04-09T02:21:10.328+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:21:10.328+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T02:21:10.340+0000] {logging_mixin.py:190} INFO - [2026-04-09T02:21:10.340+0000] {dag.py:4138} INFO - Setting next_dagrun for 03_basics_macro_jinja to 2026-04-08 09:00:00+00:00, run_after=2026-04-09 09:00:00+00:00
+[2026-04-09T02:21:10.349+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/03_basics_context_jinja.py took 0.055 seconds
