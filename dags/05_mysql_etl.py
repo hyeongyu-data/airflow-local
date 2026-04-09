@@ -1,3 +1,4 @@
+
 '''
 - etl 간단하게 적용, 스마트팩토리상 온도 센서에 대한 ETL 처리, mysql 사용
 '''
@@ -7,7 +8,7 @@ from airflow import DAG
 from airflow.operators.python import PythonOperator
 import logging
 # 추가분
-from airflow.providers.mysql.operators.mysql import MysqlOperator
+#from airflow.providers.mysql.operators.mysql import MysqlOperator
 # Load 처리시 sql에 전처리된 데이터를 밀어 넣을때 사용
 from airflow.providers.mysql.hooks.mysql import MySqlHook
 # 데이터
@@ -22,13 +23,19 @@ import os
 
 # 도커 내부에 생성된 컨테이너 상 워커내의 airflow 상의 지정한 데이터 위치
 DATA_PATH = '/opt/airflow/dags/data'
-os.mkdir(DATA_PATH, exist_ok=True)
+os.makedirs(DATA_PATH, exist_ok=True)
 
 def _extract(**kwargs):
+    # 스마트팩토리에 설치된 오븐 온도 센서에서  데이터가 발생되면 데이터레이크(s3, 어딘가에 존재)
+    # 에 쌓이고 있다 (가정) => 추출해서 가져오는 단계로 가정
     pass
 def _trasform(**kwargs):
+    # _extract에서 추출한 데이터를 XCom을 통해서 획득
+    # 이 데이터를 df(pandas 사용, 소량데이터)로 로드 -> 섭씨를 화씨로 일괄 처리(1번에 n개의 센서에서 데이터가 전달)
+    # 전처리된 내용은 csv로 덤프 (s3로 업로드 고려)
     pass
 def _load(**kwargs):
+    # csv => df => mysql 적제
     pass
 
 # 3. DAG 정의
@@ -46,10 +53,26 @@ with DAG(
     tags        = ['mysql', 'etl'],
 ) as dag:
     # 4. task 정의
-    task_create_table = MysqlOperator(
-        # 최초는 생성, 존재하면 pass => if not exists
-        task_id = "create_table",
-    )
+    # task_create_table = MysqlOperator(
+    #     # 테이블 생성, if not exists를 사용하여 무조건 sql이 일단 수행되게 구성 
+    #     # -> 아니라면 fail 발생함(2회차부터)
+    #     # 최초는 생성, 존재하면 pass => if not exists
+    #     task_id = "create_table",
+    #     # 연결정보
+    #     mysql_conn_id = "mysql_default", # 대시보드에 admin>connectinos>하위에 사전 등록
+    #     # sql
+    #     sql = '''
+    #         CREATE TABLE IF NOT EXISTS sensor_readings (
+    #             id INT AUTO_INCREMENT PRIMARY KEY,
+    #             sensor_id VARCHAR(50),
+    #             timestamp DATETIME,
+    #             temperature_c FLOAT,
+    #             temperature_f FLOAT,
+    #             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    #         );
+    #     '''
+    # )
+    
     task_extract    = PythonOperator(
         task_id = "extract",
         python_callable = _extract
@@ -64,4 +87,5 @@ with DAG(
     )
 
     # 5. 의존성 정의 -> 시나리오별 준비 
-    task_create_table >> task_extract >> task_trasform >> task_load
+    # task_create_table >> task_extract >> task_trasform >> task_load
+    task_extract >> task_trasform >> task_load
