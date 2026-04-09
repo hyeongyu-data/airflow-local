@@ -8,6 +8,8 @@ from airflow.operators.python import PythonOperator
 import logging
 # 추가분
 #from airflow.providers.mysql.operators.mysql import MysqlOperator
+# 범용 sql 오퍼레이터로 대체
+from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
 # Load 처리시 sql에 전처리된 데이터를 밀어 넣을때 사용
 from airflow.providers.mysql.hooks.mysql import MySqlHook
 # 데이터
@@ -44,46 +46,46 @@ def _extract(**kwargs):
     with open(file_path, 'w') as f:
         json.dump(data, f)
 
-    # 로그는 별도의 프로그램에서 지속적으로 발생시켜야 함 (시뮬레이션 기준)
-    # 현재는 편의상 airflow에 포함시킴
+    # 로그는 별도의 프로그램에서 지속적으로 발생시켜야 함(시뮬레이션 기준)
+    # 현재는 편의상 airflow에 포함시킴 
 
-    # XCOM을 통해서 task_transform에게 전달(로그의 경로를 전달, 실 데이터 전달x(지양))
-    logging.info(f'extract 한 로그 데이터{file_path}')
+    # XCOM을 통해서  task_transform에게 전달 (로그의 경로를 전달, 실 데이터 전달 x(지양))
+    logging.info(f'extract 한 로그 데이터 { file_path } ')
     return file_path
 
 def _trasform(**kwargs):
-    # _extract에서 추출한 데이터를 XCom을 통해서 획득
+    # _extract에서 추출한 데이터를 XCom을 통해서 획득    
     # 1. XCOM을 통해서 이전 task에서 전달한 데이터 획득
     ti = kwargs['ti']
     json_file_path = ti.xcom_pull(task_ids='extract')
-    # 로그출력
-    logging.info(f'전달받은 데이터{json_file_path}')
+    # 로그 출력
+    logging.info(f'전달받은 데이터 {json_file_path}')
 
     # 이 데이터를 df(pandas 사용, 소량데이터)로 로드
     df = pd.read_json( json_file_path )
-
-    # 섭씨를 화씨로 일괄 처리(1번에 n개의 센서에서 데이터가 전달)
+     
+    # 섭씨를 화씨로 일괄 처리(1번에 n개의 센서에서 데이터가 전달)    
     # 설정 : 우리 공장에서는 측정온도가 섭씨 100도 미만 정상 데이터로 간주한다.
-    #       100도 이상 데이터는 이상 탐지로 간주한다. -> 일단 버리는것으로 사용
-    # 1. 100도 미만 데이터만 필터링(추출) -> pandas의 블리언 인덱싱 사용
-    target_df = df[ df['temperature'] < 100 ].copy()
-    # 2. 파생변수로 화씨 데이터 구성 (temperature_f) = (섭씨 * 9 / 5) + 32
-    target_df['temperature_f'] = (target_df['temperature']*9/5)+32
-
-    # 전처리된 내용은 csv로 덤프 (s3로 업로드 고려)
+    #       100도 이상 데이터는 이상탐지로 간주한다. -> 일단 버리는것으로 사용
+    # 2. 100도 미만 데이터만 필터링(추출) -> pandas의 블리언 인덱싱 사용
+    target_df = df[ df['temperature'] < 100 ].copy()    
+    # 3. 파생변수로 화씨 데이터 구성 (temperature_f) = (섭씨 * 9/5) + 32
+    target_df['temperature_f'] = (target_df['temperature'] * 9/5) + 32
+    
+    # 4. 전처리된 내용은 csv로 덤프 (s3로 업로드 고려)
     # 파일명 준비 /opt/airflow/dags/data/preprocessing_data_DAG수행날짜.csv
-    file_path = f'{DATA_PATH}/preprocessing_data_{kwargs['ds_nodash']}.csv'
+    file_path = f'{DATA_PATH}/preprocessing_data_{ kwargs['ds_nodash'] }.csv'
     # 저장
-    target_df.to_csv(file_path, index=False) # 인덱스 제외
-    logging.info(f'전처리후 csv 저장 완료{file_path}') # airflow 가 aws에서 가동되면 s3로 저장
+    target_df.to_csv( file_path, index=False ) # 인덱스 제외
+    logging.info(f'전처리후 csv 저장 완료 {file_path}') # airflow가 aws에서 가동되면 s3로 저장
 
     # 5. csv 경로 xcom을 통해서 개시
     return file_path
-
     pass
 
 def _load(**kwargs):
     # csv => df => mysql 적제
+    
     pass
 
 # 3. DAG 정의
@@ -101,25 +103,25 @@ with DAG(
     tags        = ['mysql', 'etl'],
 ) as dag:
     # 4. task 정의
-    # task_create_table = MysqlOperator(
-    #     # 테이블 생성, if not exists를 사용하여 무조건 sql이 일단 수행되게 구성 
-    #     # -> 아니라면 fail 발생함(2회차부터)
-    #     # 최초는 생성, 존재하면 pass => if not exists
-    #     task_id = "create_table",
-    #     # 연결정보
-    #     mysql_conn_id = "mysql_default", # 대시보드에 admin>connectinos>하위에 사전 등록
-    #     # sql
-    #     sql = '''
-    #         CREATE TABLE IF NOT EXISTS sensor_readings (
-    #             id INT AUTO_INCREMENT PRIMARY KEY,
-    #             sensor_id VARCHAR(50),
-    #             timestamp DATETIME,
-    #             temperature_c FLOAT,
-    #             temperature_f FLOAT,
-    #             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-    #         );
-    #     '''
-    # )
+    task_create_table = SQLExecuteQueryOperator(
+        # 테이블 생성, if not exists를 사용하여 무조건 sql이 일단 수행되게 구성 
+        # -> 아니라면 fail 발생함(2회차부터)
+        # 최초는 생성, 존재하면 pass => if not exists
+        task_id = "create_table",
+        # 연결정보
+        conn_id = "mysql_default", # 대시보드에 admin>connectinos>하위에 사전 등록
+        # sql
+        sql = '''
+            CREATE TABLE IF NOT EXISTS sensor_readings (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                sensor_id VARCHAR(50),
+                timestamp DATETIME,
+                temperature_c FLOAT,
+                temperature_f FLOAT,
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+            );
+        '''
+    )
     
     task_extract    = PythonOperator(
         task_id = "extract",
@@ -135,5 +137,5 @@ with DAG(
     )
 
     # 5. 의존성 정의 -> 시나리오별 준비 
-    # task_create_table >> task_extract >> task_transform >> task_load
-    task_extract >> task_transform >> task_load
+    task_create_table >> task_extract >> task_transform >> task_load
+    #task_extract >> task_transform >> task_load
