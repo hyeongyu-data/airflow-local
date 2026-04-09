@@ -1,6 +1,8 @@
 '''
 - PythonOperator 사용
-- task 간 통신 => XCom 사용 => task간 상호 대화
+- task 간 통신 => XCom 사용(airflow의 내부 컨텍스트 공간을 접근하고 엑세스등) => task간 상호 대화
+- 통신간 사용할 데이터의 크기는 저장공간(혹은 메모리공간) 고려하여 가급적 raw 데이터가 아닌
+- raw 데이터나 상황을 접근, 판단할 수 있는 메타 정보 정도가 적절해 보임(케이스별 상이)
 '''
 # 1. 모듈 가져오기
 from airflow import DAG
