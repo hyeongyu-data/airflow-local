@@ -43,12 +43,23 @@ def _extract(**kwargs):
     file_path = f'{DATA_PATH}/sensor_data_{ kwargs['ds_nodash'] }.json'
     with open(file_path, 'w') as f:
         json.dump(data, f)
-    pass
+
+    # 로그는 별도의 프로그램에서 지속적으로 발생시켜야 함 (시뮬레이션 기준)
+    # 현재는 편의상 airflow에 포함시킴
+
+    # XCOM을 통해서 task_transform에게 전달(로그의 경로를 전달, 실 데이터 전달x(지양))
+    logging.info(f'extract 한 로그 데이터{file_path}')
+    return file_path
 
 def _trasform(**kwargs):
     # _extract에서 추출한 데이터를 XCom을 통해서 획득
     # 이 데이터를 df(pandas 사용, 소량데이터)로 로드 -> 섭씨를 화씨로 일괄 처리(1번에 n개의 센서에서 데이터가 전달)
     # 전처리된 내용은 csv로 덤프 (s3로 업로드 고려)
+    # 1. XCOM을 통해서 이전 task에서 전달한 데이터 획득
+    ti = kwargs['ti']
+    json_file_path = ti.xcom_pull(task_ids='extract')
+    # 로그출력
+    logging.info(f'전달받은 데이터{json_file_path}')
     pass
 
 def _load(**kwargs):
@@ -94,7 +105,7 @@ with DAG(
         task_id = "extract",
         python_callable = _extract
     )
-    task_trasform   = PythonOperator(
+    task_transform   = PythonOperator(
         task_id = "trasform",
         python_callable = _trasform
     )
@@ -104,5 +115,5 @@ with DAG(
     )
 
     # 5. 의존성 정의 -> 시나리오별 준비 
-    # task_create_table >> task_extract >> task_trasform >> task_load
-    task_extract >> task_trasform >> task_load
+    # task_create_table >> task_extract >> task_transform >> task_load
+    task_extract >> task_transform >> task_load
