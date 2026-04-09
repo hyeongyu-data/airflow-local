@@ -1,4 +1,3 @@
-
 '''
 - etl 간단하게 적용, 스마트팩토리상 온도 센서에 대한 ETL 처리, mysql 사용
 '''
@@ -28,12 +27,30 @@ os.makedirs(DATA_PATH, exist_ok=True)
 def _extract(**kwargs):
     # 스마트팩토리에 설치된 오븐 온도 센서에서  데이터가 발생되면 데이터레이크(s3, 어딘가에 존재)
     # 에 쌓이고 있다 (가정) => 추출해서 가져오는 단계로 가정
+    
+    # 더미 데이터 고려 구성 -> 1회성으로 10건 구성 -> [ {}, {}, ... ]
+    data  = [
+        { 
+            "sensor_id" : f"SENSOR_{i+1}", # 장비 ID
+            "timestamp" : datetime.now().strftime("%Y-%m-%d %H:%M:%S"), # YYYY-MM-DD hh:mm:ss
+            "temperature": round( random.uniform(20.0, 150.0), 2),
+            "status" : "on", # "off"
+        } for i in range(10)   ]
+
+    # 더미 데이터를 파일로 저장 (로그파일처럼) -> json 형태
+    # /opt/airflow/dags/data/sensor_data_DAG수행날짜.json
+    # 실습 -> 위의 데이터를 위의 형식으로 저장하시오 ( json.dump(data, f) )
+    file_path = f'{DATA_PATH}/sensor_data_{ kwargs['ds_nodash'] }.json'
+    with open(file_path, 'w') as f:
+        json.dump(data, f)
     pass
+
 def _trasform(**kwargs):
     # _extract에서 추출한 데이터를 XCom을 통해서 획득
     # 이 데이터를 df(pandas 사용, 소량데이터)로 로드 -> 섭씨를 화씨로 일괄 처리(1번에 n개의 센서에서 데이터가 전달)
     # 전처리된 내용은 csv로 덤프 (s3로 업로드 고려)
     pass
+
 def _load(**kwargs):
     # csv => df => mysql 적제
     pass
