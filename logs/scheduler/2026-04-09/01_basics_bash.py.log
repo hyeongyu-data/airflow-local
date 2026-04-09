@@ -1006,3 +1006,24 @@
 [2026-04-09T01:50:33.900+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:50:33.900+0000] {dag.py:3211} INFO - Sync 1 DAGs
 [2026-04-09T01:50:33.912+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:50:33.912+0000] {dag.py:4138} INFO - Setting next_dagrun for 01_basics_bash to 2026-04-09 00:00:00+00:00, run_after=2026-04-10 00:00:00+00:00
 [2026-04-09T01:50:33.923+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/01_basics_bash.py took 0.053 seconds
+[2026-04-09T01:51:04.711+0000] {processor.py:186} INFO - Started process (PID=9344) to work on /opt/airflow/dags/01_basics_bash.py
+[2026-04-09T01:51:04.712+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/01_basics_bash.py for tasks to queue
+[2026-04-09T01:51:04.714+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:51:04.714+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/01_basics_bash.py
+[2026-04-09T01:51:04.722+0000] {processor.py:925} INFO - DAG(s) '01_basics_bash' retrieved from /opt/airflow/dags/01_basics_bash.py
+[2026-04-09T01:51:04.738+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:51:04.738+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T01:51:04.750+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:51:04.750+0000] {dag.py:4138} INFO - Setting next_dagrun for 01_basics_bash to 2026-04-09 00:00:00+00:00, run_after=2026-04-10 00:00:00+00:00
+[2026-04-09T01:51:04.761+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/01_basics_bash.py took 0.055 seconds
+[2026-04-09T01:51:35.674+0000] {processor.py:186} INFO - Started process (PID=9409) to work on /opt/airflow/dags/01_basics_bash.py
+[2026-04-09T01:51:35.674+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/01_basics_bash.py for tasks to queue
+[2026-04-09T01:51:35.676+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:51:35.676+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/01_basics_bash.py
+[2026-04-09T01:51:35.686+0000] {processor.py:925} INFO - DAG(s) '01_basics_bash' retrieved from /opt/airflow/dags/01_basics_bash.py
+[2026-04-09T01:51:35.698+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:51:35.698+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T01:51:35.711+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:51:35.711+0000] {dag.py:4138} INFO - Setting next_dagrun for 01_basics_bash to 2026-04-09 00:00:00+00:00, run_after=2026-04-10 00:00:00+00:00
+[2026-04-09T01:51:35.720+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/01_basics_bash.py took 0.051 seconds
+[2026-04-09T01:52:06.596+0000] {processor.py:186} INFO - Started process (PID=9475) to work on /opt/airflow/dags/01_basics_bash.py
+[2026-04-09T01:52:06.597+0000] {processor.py:914} INFO - Processing file /opt/airflow/dags/01_basics_bash.py for tasks to queue
+[2026-04-09T01:52:06.601+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:52:06.601+0000] {dagbag.py:587} INFO - Filling up the DagBag from /opt/airflow/dags/01_basics_bash.py
+[2026-04-09T01:52:06.612+0000] {processor.py:925} INFO - DAG(s) '01_basics_bash' retrieved from /opt/airflow/dags/01_basics_bash.py
+[2026-04-09T01:52:06.627+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:52:06.627+0000] {dag.py:3211} INFO - Sync 1 DAGs
+[2026-04-09T01:52:06.637+0000] {logging_mixin.py:190} INFO - [2026-04-09T01:52:06.637+0000] {dag.py:4138} INFO - Setting next_dagrun for 01_basics_bash to 2026-04-09 00:00:00+00:00, run_after=2026-04-10 00:00:00+00:00
+[2026-04-09T01:52:06.648+0000] {processor.py:208} INFO - Processing /opt/airflow/dags/01_basics_bash.py took 0.057 seconds
