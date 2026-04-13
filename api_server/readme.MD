@@ -9,5 +9,13 @@
     - 홈페이지
         - http://127.0.0.1:8000/
     - 문서 접속(swagger docs)
+        - swagger를 fastapi 기본제공(flask,django 기본x)
         - http://127.0.0.1:8000/docs
+            ```
+                API 문서 제공, API 테스트 가능
+            ```
+    - API 문서 간결화 된
         - http://127.0.0.1:8000/redoc
+    - API 테스트 전용
+        - postman(구글 extension -> 독립)
+        - Thunder Client (vscode extension)
