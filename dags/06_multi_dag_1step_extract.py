@@ -63,7 +63,7 @@ with DAG(
     task_trigger_transform_dag_run = TriggerDagRunOperator(
         task_id = "trigger_transform",
         # 트리거 대상
-        trigger_dag_id = "06_multi_dag_2step_trasform", # 구동시킬 DAG id
+        trigger_dag_id = "06_multi_dag_2step_transform", # 구동시킬 DAG id
         # 전달할 데이터 -> xcom을 통해서 획득 가능(동일dag에 존재->jinja 템플릿 활용)
         conf = {
             # 필요시 기타 정보도 전달 가능함
