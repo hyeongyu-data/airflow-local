@@ -119,7 +119,7 @@ def _load(**kwargs):
             logging.info('mysql에 적제 완료')
             pass        
     except Exception as e:
-        logging.info(f'적제 오류 : {e}') # 예외 던지기로 변경 필요(리뷰때 시도)
+        logging.info(f'적제 오류 : {e}') # 예외 던지기로 변경 필요(리뷰때 시도 )
         pass
     finally:
         # 5. 연결 종료
