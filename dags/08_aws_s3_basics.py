@@ -24,7 +24,25 @@ FILE_NAME   = 'hello.txt'
 LOCAL_PATH = f'/opt/airflow/dags/data/{FILE_NAME}'
 
 # 3. DAG 정의
-
+with DAG(
+    dag_id      = "08_aws_s3_basics", 
+    description = "aws 연동, s3 업로드",
+    default_args= {
+        'owner'             : 'de_2team_manager',        
+        'retries'           : 1,
+        'retry_delay'       : timedelta(minutes=1)
+    },
+    schedule_interval = '@daily',
+    start_date  = datetime(2026,2,25),     
+    catchup     = False,
+    tags        = ['aws', 's3'],
+)
     # 4. Task 정의
-
+    task_upload_to_s3 = LocalFilesystemToS3Operator(
+        task_id = "upload_to_s3"
+    )
+    task_check_s3     = PythonOperator(
+        task_id = "check_s3"
+    )
     # 5. 의존성
+    task_upload_to_s3 >> task_check_s3
