@@ -1,4 +1,3 @@
-
 '''
 - API 호출 과정 적용. 데이터 처리에 대한 스케줄 구성
 '''
@@ -9,6 +8,7 @@ from airflow.operators.python import PythonOperator
 import logging
 import json
 import requests # api 호출용, MSA 서비스 호출용
+from airflow.providers.mysql.hooks.mysql import MySqlHook
 
 # 2. API 서버 주소
 #    특정 컨테이너의 서비스명으로 URL을 조정 -> 해당 컨테이너로 요청 전달
@@ -54,24 +54,43 @@ def _api_service_call(**kwargs):
     
 def _load_users_credit(**kwargs):
     # 1. 신용 평가 결과값 획득
+    ti          = kwargs['ti']
+    users_grade = ti.xcom_pull(task_ids='task_api_service_call')
+    if not users_grade:
+        logging.error('신용 평가 결과 없음')
+        raise ValueError('신용 평가 결과 없음') # 작업 실패로 표현 -> red 태그 구성
+    
     # 2. MySqlHook을 이용하여 연결
-    # 3. 테이블이 없으면 생성(임시편성) -> 추후 사전 작업으로 이동
-    #    cursor.execute()
-    '''
-        CREATE TABLE IF NOT EXISTS customers (
-            user_id VARCHAR(50) PRIMARY KEY,
-            income INT DEFAULT NULL,
-            loan_amt INT DEFAULT NULL,
-            credit_score INT DEFAULT NULL,
-            grade VARCHAR(10) DEFAULT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-        )
-    '''
-    # 4. 신용평가 별과 삽입(추후 고객 정보 업데이트로 조정)
-    #    cursor.executemany()
-    # 5. 커밋
-    # 6. 연결종료
-    pass
+    mysql_hook = MySqlHook(mysql_conn_id='mysql_default')
+    with mysql_hook.get_conn() as conn:        
+        with conn.cursor() as cursor:
+            # 3. 테이블이 없으면 생성(임시편성) -> 추후 사전 작업으로 이동
+            cursor.execute('''
+                CREATE TABLE IF NOT EXISTS customers (
+                    user_id VARCHAR(50) PRIMARY KEY,
+                    income INT DEFAULT NULL,
+                    loan_amt INT DEFAULT NULL,
+                    credit_score INT DEFAULT NULL,
+                    grade VARCHAR(10) DEFAULT NULL,
+                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                )
+            ''')
+            # 4. 신용평가 별과 삽입(추후 고객 정보 업데이트로 조정)
+            sql = '''
+                insert into customers
+                (user_id, credit_score, grade)
+                values
+                (%s, %s, %s)
+            '''
+            params = [
+                ( data['user_id'], data['credit_score'], data['grade'])
+                for data in users_grade
+            ]
+            cursor.executemany( sql, params )
+            # 5. 커밋
+            conn.commit()
+            # 6. 연결종료 -> 커서 닫기 -> 커넥션 닫기 : 자동
+            pass
 
 # 3. DAG 정의
 with DAG(
