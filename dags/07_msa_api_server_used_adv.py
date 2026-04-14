@@ -92,7 +92,7 @@ def _api_service_call(**kwargs):
     # 1. 이전 task의 결과물 획득 
     #    (차후 -> 데이터레이크(s3), athena, redshift, opensearch(엘라스틱서치 aws버전),..등 서비스 통해서 획득)
     ti         = kwargs['ti']
-    users_data = ti.xcom_pull(task_ids='task_create_dummy_data')
+    users_data = ti.xcom_pull(task_ids='task_extract_data')
     logging.info(f'요청시 전달 데이터 {users_data}')
     # 2. 신용 평가 요청 및 응답 -> api 호출 (차후 LLM 모델과 연계 가능) -> 통신 -> I/O -> 예외처리
     try:
@@ -119,7 +119,7 @@ def _load_users_credit(**kwargs):
         logging.error('신용 평가 결과 없음')
         raise ValueError('신용 평가 결과 없음') # 작업 실패로 표현 -> red 태그 구성
     
-    logging.error('신용 평가 결과 없음')
+    logging.error(users_grade)
 
     # 2. MySqlHook을 이용하여 연결
     mysql_hook = MySqlHook(mysql_conn_id='mysql_default')
@@ -181,4 +181,4 @@ with DAG(
     )
 
     # 5. 의존성, 각 task는 xCom 통신으로 데이터 공유
-    task_create_dummy_data #>> task_extract_data >> task_api_service_call >> task_load_users_credit
+    task_create_dummy_data >> task_extract_data >> task_api_service_call >> task_load_users_credit
