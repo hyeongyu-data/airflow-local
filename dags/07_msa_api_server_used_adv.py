@@ -119,30 +119,20 @@ def _load_users_credit(**kwargs):
         logging.error('신용 평가 결과 없음')
         raise ValueError('신용 평가 결과 없음') # 작업 실패로 표현 -> red 태그 구성
     
+    logging.error('신용 평가 결과 없음')
+
     # 2. MySqlHook을 이용하여 연결
     mysql_hook = MySqlHook(mysql_conn_id='mysql_default')
     with mysql_hook.get_conn() as conn:        
         with conn.cursor() as cursor:
-            # 3. 테이블이 없으면 생성(임시편성) -> 추후 사전 작업으로 이동
-            cursor.execute('''
-                CREATE TABLE IF NOT EXISTS customers (
-                    user_id VARCHAR(50) PRIMARY KEY,
-                    income INT DEFAULT NULL,
-                    loan_amt INT DEFAULT NULL,
-                    credit_score INT DEFAULT NULL,
-                    grade VARCHAR(10) DEFAULT NULL,
-                    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-                )
-            ''')
             # 4. 신용평가 별과 삽입(추후 고객 정보 업데이트로 조정)
             sql = '''
-                insert into customers
-                (user_id, credit_score, grade)
-                values
-                (%s, %s, %s)
+                update customers
+                set credit_score=%s, grade=%s
+                where user_id=%s
             '''
             params = [
-                ( data['user_id'], data['credit_score'], data['grade'])
+                ( data['credit_score'], data['grade'], data['user_id'])
                 for data in users_grade
             ]
             cursor.executemany( sql, params )
