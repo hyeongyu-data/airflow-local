@@ -54,10 +54,10 @@ with DAG(
     tags        = ['aws', 's3'],
 )as dag:
     # 4. Task 정의 
-    task_create_file = BashOperator(
-        task_id = "create_file",
-        bash_command = f'echo "hello airflow & s3" > {LOCAL_PATH}'
-    )
+    # task_create_file = BashOperator(
+    #     task_id = "create_file",
+    #     bash_command = f'echo "hello airflow & s3" > {LOCAL_PATH}'
+    # )
     task_upload_to_s3 = LocalFilesystemToS3Operator(
         task_id = "upload_to_s3",
         filename = LOCAL_PATH,  # 로컬 PC등 원본 리소스의 위치(파일명 포함)
@@ -72,5 +72,6 @@ with DAG(
     )
 
     # 5. 의존성
-    task_create_file >> task_upload_to_s3 >> task_check_s3
+    # task_create_file >>
+    task_upload_to_s3 >> task_check_s3
     pass
