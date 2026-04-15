@@ -30,7 +30,7 @@ with DAG(
         'retries'           : 1,
         'retry_delay'       : timedelta(minutes=1)
     },
-    schedule_interval = 'None', # 스케줄 x -> 트리거 작동으로 실행
+    schedule_interval = None, # 스케줄 x -> 트리거 작동으로 실행
     start_date  = datetime(2026,2,25),     
     catchup     = False,
     tags        = ['aws', 's3', 'producer'],
