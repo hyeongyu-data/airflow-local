@@ -36,7 +36,7 @@ with DAG(
     tags        = ['aws', 's3', 'producer'],
 ) as dag:
     # 4. 오퍼레이터를 통한 task 정의
-    task_create_dummy_data_csv = PythonOperator(
+    task_create_dummy_data_csv = BashOperator(
         task_id = "task_create_dummy_data_csv",
         bash_command = f'echo "id,timestamp,value\n1,$(date),100\n2,$(date),500" > {LOCAL_PATH}'
     )
