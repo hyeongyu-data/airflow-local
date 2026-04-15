@@ -34,7 +34,7 @@ def make_log(config):
     print('-'*50)
 
 def make_one_log():
-    return json.dumps( log_gen.finance, ensure_ascii=False )
+    return json.dumps( log_gen.finance(), ensure_ascii=False )
 
 if __name__ == '__main__':
     config = {
