@@ -9,25 +9,16 @@ from log_generator import LogGenerator
 
 log_gen = LogGenerator()
 log_gen_map = {
-   "finance":log_gen.finance(),
-   "ecommerce":log_gen.ecommerce(),
-   "iot":log_gen.iot(),
-   "ott":log_gen.ott(),
-   "factory":log_gen.factory(),
-   "lol_game":log_gen.lol_game()
+   "finance":log_gen.finance,
+   "ecommerce":log_gen.ecommerce,
+   "iot":log_gen.iot,
+   "ott":log_gen.ott,
+   "factory":log_gen.factory,
+   "lol_game":log_gen.lol_game
 }
 
 def make_log(config):
-    log_gen = LogGenerator()
-    log_gen_map = {
-        "finance":log_gen.finance,
-        "ecommerce":log_gen.ecommerce,
-        "iot":log_gen.iot,
-        "ott":log_gen.ott,
-        "factory":log_gen.factory,
-        "lol_game":log_gen.lol_game
-    }
-    print(f'{config['target_industry']} 로그 생성 시작')
+    print(f'{config["target_industry"]} 로그 생성 시작')
     print('-'*50)
     for i in range(config['total_count']): # loop 옵션은 리뷰때 수정 시도
         #log  = log_gen.finance()
