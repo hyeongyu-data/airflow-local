@@ -40,7 +40,8 @@ with DAG(
         'retries'           : 1,
         'retry_delay'       : timedelta(minutes=1)
     },
-    schedule_interval = None, # DAG는 활성화 정도만 구성, 센서 작동에 스케줄이 필요한지 테스트
+    # 최소 스케줄은 필요함 -> None X
+    schedule_interval = '@daily', # DAG는 활성화 정도만 구성, 센서 작동에 스케줄이 필요한지 테스트
     start_date  = datetime(2026,2,25),     
     catchup     = False,
     tags        = ['aws', 's3', 'consummer'],
