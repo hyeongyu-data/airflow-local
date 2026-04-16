@@ -40,12 +40,6 @@ def main():
     #    티커, 가격, 로그발생시간, ..
     #    입력데이터에 대한 테이블에 kds가 연결되어 있어야함
     t_env.execute_sql('''
-    ''')
-
-    # 3. 출력데이터에 대한 테이블 구성 (kds로부터(OUTPUT) 데이터를 읽기 처리 -> 어딘가에 담는다 -> 테이블)
-    #    티커, 평균가격, 생성시간
-    #    출력데이터에 대한 테이블에 kds가 연결되어 있어야함
-    t_env.execute_sql('''
         create table stock_input (
             ticker STRING,
             price DOUBLE,
@@ -60,7 +54,9 @@ def main():
         )
     ''')
 
-    # 4. 연산(전처리, 가공, 분석(요구사항에 맞게)처리한 형태) 및 전송(kds(OUTPUT) 전송)
+    # 3. 출력데이터에 대한 테이블 구성 (kds로부터(OUTPUT) 데이터를 읽기 처리 -> 어딘가에 담는다 -> 테이블)
+    #    티커, 평균가격, 생성시간
+    #    출력데이터에 대한 테이블에 kds가 연결되어 있어야함
     t_env.execute_sql('''
         create table stock_output (
             ticker STRING,
@@ -72,6 +68,11 @@ def main():
             "aws.region"          = "ap-northeasr-2",
             "format"              = "json"
         )
+    ''')
+
+    # 4. 연산(전처리, 가공, 분석(요구사항에 맞게)처리한 형태) 및 전송(kds(OUTPUT) 전송)
+    t_env.execute_sql('''
+        
     ''')
     pass
 
