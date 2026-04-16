@@ -55,7 +55,7 @@ try:
     while True:
         data = gen_stock_data()
         kinesis.put_record(
-            # 스트림 이름 수정
+            # TODO:Flink 스트림 이름 수정
             StreamName = "de-ai-03-an2-kds-stock-input",
             Data = json.dumps(data),
             PartitionKey = data['ticker'] 
