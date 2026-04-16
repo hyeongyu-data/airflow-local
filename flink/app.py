@@ -5,6 +5,13 @@
 - 표준 SQL + AWS + Flink 특징점 추가됨 형태
 - flink 를 이용하면 데이터를 배치|스트리밍 등 어떤 방식이던 분석에 적합한 데이터 형태로 가공할 수 있음
 - 자바|스칼라|파이선 + SQL 결합하여 처리 가능함
+
+- 원본데이터 -> KDS(input) -> Flink stock_input table -> Flink 연산/전송 
+         -> Flink stock_output table -> KDS(output) -> firehose -> s3(가공된 데이터)
+
+  or(소규모 lambda 사용)
+
+- 원본데이터 -> KDS(input) -> lambda service(서버리스) -> KDS(output) -> firehose -> s3(가공된 데이터)
 '''
 import os
 from pyflink.table import EnvironmentSettings, TableEnvironment
@@ -55,7 +62,16 @@ def main():
 
     # 4. 연산(전처리, 가공, 분석(요구사항에 맞게)처리한 형태) 및 전송(kds(OUTPUT) 전송)
     t_env.execute_sql('''
-        create table stock_output () with ()
+        create table stock_output (
+            ticker STRING,
+            avg_price DOUBLE,
+            avg_time TIMESTAMP(3)
+        ) with (
+            "connector"           = "kinesis",
+            "stream"              = "de-ai-03-an2-kds-stock-input",
+            "aws.region"          = "ap-northeasr-2",
+            "format"              = "json"
+        )
     ''')
     pass
 
