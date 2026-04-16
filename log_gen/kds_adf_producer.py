@@ -39,10 +39,10 @@ print( kinesis )
 
 # 4. 데이터 제너레이터 함수 구성
 def gen_stock_data():
-    ticker = ['NVDA','GOOGL','AAPL','TSLA','AMZN','MSFT'],
+    ticker = ['NVDA','GOOGL','AAPL','TSLA','AMZN','MSFT']
     # 종목별 특정 시간(기간)동안 평균가 연산 -> s3 전달 목표
     return {
-        "event_time": datetime.now().isoformat,
+        "event_time": datetime.now().isoformat(),
         "ticker": random.choice(ticker),
         "price": round(random.uniform(100,1000),2),
         "volume": random.randint(1,100),
@@ -60,7 +60,7 @@ try:
             # 스트림 이름
             StreamName = "de-ai-03-an2-kds-stock-analysis",
             # 데이터 ( 객체 직렬화하여 문자열 제공)
-            Data = json.dump(data),
+            Data = json.dumps(data),
             # 티커별로 샤드(고속도로의 차선) 분산하여 kinesis에서 전달
             # 티커가 6개 이므로 샤드를 6개(6차선도로를 구성, 6개의 줄기를 구성)하여 개별 데이터 전송
             PartitionKey = data['ticker'] # 해당 컬럼의 고유값 개수만큼 조각(샤드, 전용 차선)구성
