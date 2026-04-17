@@ -64,7 +64,7 @@ def main():
             window_time TIMESTAMP(3)
         ) with (
             "connector"           = "kinesis",
-            "stream"              = "de-ai-03-an2-kds-stock-input",
+            "stream"              = "de-ai-03-an2-kds-stock-output",
             "aws.region"          = "ap-northeasr-2",
             "format"              = "json"
         )
