@@ -15,11 +15,11 @@ st_env.execute_sql("""
         event_time TIMESTAMP(3),
         WATERMARK FOR event_time AS event_time - INTERVAL '1' SECOND
     ) with (
-        "connector"           = "kinesis",
-        "stream"              = "de-ai-03-an2-kds-stock-input",
-        "aws.region"          = "ap-northeasr-2",
-        "scan.stream.initpos" = "LATEST",
-        "format"              = "json"
+        'connector'           = 'kinesis',
+        'stream'              = 'de-ai-03-an2-kds-stock-input',
+        'aws.region'          = 'ap-northeasr-2',
+        'scan.stream.initpos' = 'LATEST',
+        'format'              = 'json'
     )
 """)
 
@@ -30,10 +30,10 @@ st_env.execute_sql("""
         avg_price DOUBLE,
         window_time TIMESTAMP(3)
     ) with (
-        "connector"           = "kinesis",
-        "stream"              = "de-ai-03-an2-kds-stock-output",
-        "aws.region"          = "ap-northeasr-2",
-        "format"              = "json"
+        'connector'           = 'kinesis',
+        'stream'              = 'de-ai-03-an2-kds-stock-output',
+        'aws.region'          = 'ap-northeasr-2',
+        'format'              = 'json'
     )
 """)
 
