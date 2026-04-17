@@ -23,7 +23,7 @@ def main():
     # 데이터를 한번에 일괄처리 -> 배치방식(x), 실시간(지속적) 데이터를 처리 -> 스트리밍 방식 (o)
     setting = EnvironmentSettings.new_instance().in_streaming_mide().build()
     # SQL과 유사한 방식으로 데이터를 다룰 수 있는 객체
-    t_env = TableEnvironment( setting )
+    t_env = TableEnvironment.create( setting )
 
     '''
         로그 원문 1개
@@ -39,12 +39,12 @@ def main():
     # 2. 입력데이터에 대한 테이블 구성 (kds로부터(INPUT) 데이터를 읽기 처리 -> 어딘가에 담는다 -> 테이블)
     #    티커, 가격, 로그발생시간, ..
     #    입력데이터에 대한 테이블에 kds가 연결되어 있어야함
-    t_env.execute_sql('''
+    t_env.execute_sql("""
         create table stock_input (
             ticker STRING,
             price DOUBLE,
             event_time TIMESTAMP(3),
-            WATERMARK FOR event_time AS event_time - INTERVAL '5' SECOND
+            WATERMARK FOR event_time AS event_time - INTERVAL '1' SECOND
         ) with (
             "connector"           = "kinesis",
             "stream"              = "de-ai-03-an2-kds-stock-input",
@@ -52,35 +52,35 @@ def main():
             "scan.stream.initpos" = "LATEST",
             "format"              = "json"
         )
-    ''')
+    """)
 
     # 3. 출력데이터에 대한 테이블 구성 (kds로부터(OUTPUT) 데이터를 읽기 처리 -> 어딘가에 담는다 -> 테이블)
     #    티커, 평균가격, 생성시간
     #    출력데이터에 대한 테이블에 kds가 연결되어 있어야함
-    t_env.execute_sql('''
+    t_env.execute_sql("""
         create table stock_output (
             ticker STRING,
             avg_price DOUBLE,
-            avg_time TIMESTAMP(3)
+            window_time TIMESTAMP(3)
         ) with (
             "connector"           = "kinesis",
             "stream"              = "de-ai-03-an2-kds-stock-input",
             "aws.region"          = "ap-northeasr-2",
             "format"              = "json"
         )
-    ''')
+    """)
 
     # 4. 연산(전처리, 가공, 분석(요구사항에 맞게)처리한 형태) 및 전송(kds(OUTPUT) 전송)
-    t_env.execute_sql('''
+    t_env.execute_sql("""
             INSERT INTO stock_output
             SELECT
                 ticker,
                 AVG(price) as avg_price,
-                TUMBLE_END(event_time, INTERVAL '10' SECOND) as avg_time
+                TUMBLE_END(event_time, INTERVAL '10' SECOND) as window_time
             FROM
                 stock_input
-            GROUP BY TUMBLE_END(event_time, INTERVAL '10' SECOND), ticker
-    ''').wait() # 쿼리 처리가 완료될때까지 기다린다!!
+            GROUP BY TUMBLE(event_time, INTERVAL '10' SECOND), ticker
+    """).wait() # 쿼리 처리가 완료될때까지 기다린다!!
     pass
 
 # 단독형 앱 -> 엔트리 포인트 표기 필요!!
