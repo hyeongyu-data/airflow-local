@@ -3,6 +3,7 @@
     - airflow를 통해서 athena 기본 연동
     - task 1
         - 테이블 생성 -> Location 정보로 특정 csv가 존재하는 버킷을 지정
+        - 해당 경로에 있는 데이터를 쿼리를 통해서 엑세스 가능함
     - task 2
         - 작업이 진행될때 최신 상태것만 사용 -> 기존에 어떤 내용이 있다면 제거 처리(감안)
     - task 3
@@ -11,6 +12,7 @@
         - task 1 -> task 2 -> task 3
     - 스케줄은 매일 1회 진행
 '''
+
 # 1. 모듈 가져오기
 from datetime import datetime, timedelta
 from airflow import DAG
@@ -57,7 +59,7 @@ with DAG(
     # 임시로 사용한 테이블 삭제 -> 클린
     t2 = AthenaOperator(
         task_id         = 'drop_table',
-        query           = f'drop table if exists {ATHENA_DB_NAME}.{TARGET_TABLE}',
+        query           = f'drop table if exists `{ATHENA_DB_NAME}`.{TARGET_TABLE}',
         database        = ATHENA_DB_NAME,
         output_location = S3_QUERY_LOG_LOC, # 쿼리 수행 결과 로그 저장 위치
         aws_conn_id     = 'aws_default'           # 접속 정보
@@ -68,15 +70,15 @@ with DAG(
     # 90점 이상 학생들 데이터를 추출 -> PARQUET 포맷변환 -> GZIP 압축 -> S3_TARGET_LOC 저장
     # 해당 소스를 TARGET_TABLE이 참조하여 -> Athena를 통해 쿼리 수행 -> 결과를 뽑아준다
     query = f'''
-        create table {ATHENA_DB_NAME}.{TARGET_TABLE}
+        create table `{ATHENA_DB_NAME}`.{TARGET_TABLE}
         with (
             format = 'PARQUET',
             parquet_compression = 'GZIP',
-            external_location = {S3_TARGET_LOC}
+            external_location = '{S3_TARGET_LOC}'
         )
         as
         select id, name, score, created_at
-        from {ATHENA_DB_NAME}.{SRC_TABLE}
+        from `{ATHENA_DB_NAME}`.{SRC_TABLE}
         where score >= 90
         order by score desc
     '''
