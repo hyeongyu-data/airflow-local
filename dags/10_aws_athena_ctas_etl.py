@@ -47,7 +47,7 @@ with DAG(
 ) as dag:
     # 4. task 정의
     # DAG 작동하면, s3내 특정위치에 저장된 내용, 테이블등을 삭제 처리 -> Clean
-    # 매번 가동시 깨끗한 초기 상태 유지 전략 -> 먹통(틍/)성 유지 -> 기존 데이터와 꼬이는 문제 해결    
+    # 매번 가동시 깨끗한 초기 상태 유지 전략 -> 멱등성 유지 -> 기존 데이터와 꼬이는 문제 해결    
     
     # 임시로 사용한 s3 특정 공간 삭제 -> 클린
     t1 = S3DeleteObjectsOperator(
@@ -59,7 +59,7 @@ with DAG(
     # 임시로 사용한 테이블 삭제 -> 클린
     t2 = AthenaOperator(
         task_id = 'drop_table',
-        query   = f'drop table if exists `{ATHENA_DB_NAME}`.{TARGET_TABLE}', 
+        query   = f'drop table if exists {TARGET_TABLE}', 
         database        = ATHENA_DB_NAME,
         output_location = S3_QUERY_LOG_LOC, # 쿼리 수행 결과 로그 저장 위치
         aws_conn_id     = 'aws_default'  # 접속 정보
@@ -69,6 +69,8 @@ with DAG(
     # PARQUET : 압축형태 지원, GZIP등 포멧 사용, 열기반 데이터 관리 
     # 90점 이상 학생들 데이터를 추출 => PARQUET 포멧변환 => GZIP 압축 => S3_TARGET_LOC 저장
     # 해당 소스를 TARGET_TABLE이 참조하여 => Athena를 통해 쿼리 수행 => 결과를 뽑아준다
+    
+    # 향후 쿼리 업데이트 -> 당일 시험에 응시한 학생 대상으로 90점 이상만 추출
     query = f'''
         create table {TARGET_TABLE}
         with (
@@ -93,13 +95,13 @@ with DAG(
     )
     # CTAS
     # 10분간 최대 대기, 10초 간격 감시 => create_table_format_parquet 테스크가 완료되었는지 점검
-    # athena상에 테이블이 완성되었지 감시
+    # athena상에 테이블이 완성되었지 감시 -> 데이터 구성이 되었다. 
     t4 = AthenaSensor(
         task_id = 'sensor',
         # 앞 테스크를 감시
         query_execution_id = "{{ task_instance.xcom_pull(task_ids='create_table_format_parquet') }}",
-        poke_interval = 10, # 10초간격 감시
-        timeout = 600,      # 최대 대기 시간, 10분
+        poke_interval = 10, # 10초간격 감시 -> 설정
+        timeout = 600,      # 최대 대기 시간, 10분 -> 설정
         aws_conn_id     = 'aws_default',
     )
 
