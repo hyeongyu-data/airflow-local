@@ -1,11 +1,11 @@
 '''
-- 싱글 프로세스로 데이터 발생
+- 멀티 프로세스로 데이터 발생
+  - store-01 ~ store-(프로세스수) : 점포별로 데이터 발생 구성
 - 실행
-  airflow-local % python ./log_gen/single_process_data_gen.py
+  airflow-local> python ./log_gen/multi_process_data_gen.py
 '''
-
 # 1. 모듈 가져오기
-import json
+import json 
 import os
 import uuid
 import random
@@ -22,7 +22,7 @@ load_dotenv()
 fake = Faker()
 AWS_ACCESS_KEY = os.getenv('ACCESS_KEY')
 AWS_SECRET_KEY = os.getenv('SECRET_KEY')
-AWS_REGION     = 'ap-northeast-2'
+AWS_REGION = 'ap-northeast-2'
 KINESIS_DATA_STREAM_NAME = 'de-ai-03-ap2-kdf-medallion-bronze-stream'
 
 # 3. aws 연동 => Session 설정 => I/O
@@ -31,12 +31,13 @@ try:
   session = boto3.Session(
     aws_access_key_id=AWS_ACCESS_KEY,
     aws_secret_access_key=AWS_SECRET_KEY,
-    region_name=AWS_REGION
+    region_name=AWS_REGION    
   )
   kinesis_client = session.client('kinesis')
   print('AWS 연동 성공')
 except Exception as e:
   print('AWS 연동 실패')
+
 
 def gen_data(store_id):
   '''
@@ -67,7 +68,7 @@ def gen_data(store_id):
           "item_id" : selected_item["item_id"],           # 구매 제품
           "price"   : selected_item["price"],             # 단가
           "qty"     : qty,                                # 수량
-          "store_id": store_id                            # 매장번호(오프/온라인 포함)
+          "store_id": store_id                          # 매장번호(오프/온라인 포함) 
       }),
       "ingested_at": current_utc_time   # 로그 발생 시간(event_time) 동일
   }
@@ -78,7 +79,7 @@ def send_to_kinesis(log_entry):
     kinesis로 데이터 전송
   '''
   try:
-    # PartitionKey -> .... -> 샤드(전용차선)의 개수에 영향줌
+    # PartitionKey -> .... -> 샤드(전용차선)의 개수에 영향줌 
     # -> 용량(가변(온디맨드), 고정(프로비저닝)) -> 운영비용 및 성능 영향
     # 샤드에 대응되는 컬럼(키) 지정 -> log_entry['event_id'] -> 중복되지 않는 가지수 등장
     # 몇개의 샤드가 필요하지? -> log_entry['event_id'] 해싱처리 -> 수치화 -> 구간화 -> 샤드 배치
@@ -97,36 +98,37 @@ def send_to_kinesis(log_entry):
   pass
 
 def run_producer(i, store_id):
-    try:
-        print(f'프로세스-{i} 가동')
-        while True:
-            log_entry = gen_data(store_id)
-            #print( log_entry )
-            if send_to_kinesis(log_entry):
-            print(f'{log_entry["event_time"]} 전송 성공 { store_id }')
-            time.sleep( random.uniform(0.5, 1.5) )
-            # break
-    except KeyboardInterrupt:
-        print('발생 중단')
-    print(f'프로세스-{i} 중단')
-
+  try:
+    print( f'프로세스-{i} 가동')
+    while True:
+      log_entry = gen_data(store_id)
+      #print( log_entry )
+      if send_to_kinesis(log_entry):
+        print(f'{log_entry["event_time"]} 전송 성공 { log_entry["event_id"][:6] }')
+      time.sleep( random.uniform(0.5, 1.5) )
+      #break
+  except KeyboardInterrupt:
+    print('발생 중단')
+  print( f'프로세스-{i} 종료')
 
 if __name__ == '__main__':
-    # 동시에 진행할 프로세스의 수
-    NUM_STORES = 4
-    processes  = list() # 프로세스 보관용 -> 조인
-    # 로그출력
-    print(f'{NUM_STORES}개의 프로세스(점포)가 데이터를 발생시켜서 kinesis에 전송')
-    for i in range(NUM_STORES): # 4번 반복
-        # 점포(매장) id 생성
-        store_id = f"store-{str(i+1).zfill(2)}" # 01, 02, 03~
-        # 멀티프로세서를 이용하여 프로세스를 생성
-        p = multiprocessing.Process(target=run_producer, args=(i, store_id))
-        processes.append(p)
-        # 프로세스 가동 -> 함수 호출 -> 내부에서 무한루프 -> 데이터 생성 및 전송
-        p.start()
-    try:
-        for p in processes:
-            p.join() # 
-    except Exception:
-        print('종료')
+  # 동시에 진행할 프로세스의 수 
+  NUM_STORES = 4
+  processes  = list() # 프로세스 보관용 -> 조인
+  # 로그 출력
+  print(f'{NUM_STORES}개의 프로세스(점포)가 데이터를 발생시켜서 kinesis에 전송')
+  for i in range(NUM_STORES): # 4번 반복
+    # 점포(매장) id 생성
+    store_id = f"store-{str(i+1).zfill(2)}" # 01, 02, 03~ 
+    # 멀티프로세서를 이용하여 프로세스 생성
+    p = multiprocessing.Process(target=run_producer, args=(i, store_id))
+    processes.append(p)
+    # 프로세스 가동 => 함수 호출 => 내부에서 무한루프 => 데이터 생성 및 전송
+    p.start()
+
+  # 종료처리, 
+  try:
+    for p in processes:
+      p.join() # 자식 프로세스가 모두 끝날때까지 대기
+  except Exception: # Ctrl + C 
+    print('종료')
