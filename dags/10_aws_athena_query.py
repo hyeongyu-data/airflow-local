@@ -40,10 +40,49 @@ with DAG(
     tags        = ['aws', 's3', 'athena', 'sql'],
 ) as dag:
     # 4. TASK 정의 
-    t1 = AthenaOperator()
-    t2 = AthenaOperator()
-    t3 = AthenaOperator()
+    # 목표 raw data(csv, 향후 parquet,..) => 가공 => report data 변환(기존 데이터 유지 x)
+    # 4. TASK 정의 -> athena에 접속해서 필요한 sql을 실행하여 업무를 수행(본질 목표)
+    t1 = AthenaOperator(
+        task_id = "raw_data_tbl_create",
+        query   = f'''
+            create external table if not exists s3_exam_csv_tbl (
+                id int,
+                name string,
+                score int,
+                created_at string,
+                result string
+            )
+            ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
+            STORED AS TEXTFILE
+            LOCATION 's3://de-ai-30-827913617635-ap-northeast-2-an/csvs/'
+            TBLPROPERTIES ("skip.header.line.count"="1");
+        ''',
+        database        = DATABASE_NAME,
+        output_location = QUERY_RESULT_S3,
+        aws_conn_id     = 'aws_default'
+    )
+    # # 매 스케줄마다 그 시점의 최신데이터로 유지하기 위해서 테이블 삭제
+    # t2 = AthenaOperator(
+    #     task_id="report_tbl_drop",
+    #     query   = f'''
 
+    #     '''
+    #     database=DATABASE_NAME,
+    #     output_location = QUERY_RESULT_S3,
+    #     aws_conn_id     = 'aws_default'
+    # )
+    # # ctas
+    # t3 = AthenaOperator(
+    #     task_id="report_tbl_create_with_raw_data_tbl",
+    #     query   = f'''
+
+    #     '''
+    #     database=DATABASE_NAME,
+    #     output_location = QUERY_RESULT_S3,
+    #     aws_conn_id     = 'aws_default'
+    # )
+    # 5. 의존성
+    t1 >> t2 >> t3
     # 5. 의존성
     t1 >> t2 >> t3
     pass
