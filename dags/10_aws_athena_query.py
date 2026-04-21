@@ -61,16 +61,17 @@ with DAG(
         output_location = QUERY_RESULT_S3,
         aws_conn_id     = 'aws_default'
     )
-    # # 매 스케줄마다 그 시점의 최신데이터로 유지하기 위해서 테이블 삭제
-    # t2 = AthenaOperator(
-    #     task_id="report_tbl_drop",
-    #     query   = f'''
-
-    #     '''
-    #     database=DATABASE_NAME,
-    #     output_location = QUERY_RESULT_S3,
-    #     aws_conn_id     = 'aws_default'
-    # )
+    # 매 스케줄마다 그 시점의 최신데이터로 유지하기 위해서 테이블 삭제
+    # 멱등성 -> 매번 주기적으로 반복되는 연산의 결과가 항상 동일하도록 (값의 동일x,절차,형태등등 동일성)
+    t2 = AthenaOperator(
+        task_id="report_tbl_drop",
+        query   = f'''
+            drop table if exists daily_report_tbl;
+        ''',
+        database=DATABASE_NAME,
+        output_location = QUERY_RESULT_S3,
+        aws_conn_id     = 'aws_default'
+    )
     # # ctas
     # t3 = AthenaOperator(
     #     task_id="report_tbl_create_with_raw_data_tbl",
