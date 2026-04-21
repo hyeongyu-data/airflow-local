@@ -72,18 +72,28 @@ with DAG(
         output_location = QUERY_RESULT_S3,
         aws_conn_id     = 'aws_default'
     )
-    # # ctas
-    # t3 = AthenaOperator(
-    #     task_id="report_tbl_create_with_raw_data_tbl",
-    #     query   = f'''
-
-    #     '''
-    #     database=DATABASE_NAME,
-    #     output_location = QUERY_RESULT_S3,
-    #     aws_conn_id     = 'aws_default'
-    # )
-    # 5. 의존성
-    t1 >> t2 >> t3
+    # ctas
+    t3 = AthenaOperator(
+        task_id="report_tbl_create_with_raw_data_tbl",
+        query   = f'''
+            create table daily_report_tbl
+            with (
+                format='PARQUET',
+                external_location = 's3://{BUCKET_NAME}/report_data/'
+            ) as
+            select 
+                result,                
+                count(*) as count,
+                avg(score) as avg_score,
+                min(score) as min_score,
+                max(score) as max_score
+            from s3_exam_csv_tbl
+            group by result            
+        ''',
+        database=DATABASE_NAME,
+        output_location = QUERY_RESULT_S3,
+        aws_conn_id     = 'aws_default'
+    )
     # 5. 의존성
     t1 >> t2 >> t3
     pass
