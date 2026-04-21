@@ -100,14 +100,13 @@ with DAG(
         )
         as
         select 
-            id,
-            COUNT(score) as cnt,
+            result,
+            COUNT(*) as cnt,
             AVG(score) as avg,
             MIN(score) as min,
             MAX(score) as max
         from {SRC_TABLE} 
-        group by score, id
-        order by score desc
+        group by result
     '''
     t4 = AthenaOperator(
         task_id = 'create_table_format_parquet',
@@ -123,3 +122,8 @@ with DAG(
     # 5. 의존성 구성
     t1 >> t2 >> t3 >> t4
     pass
+
+# 최종 수정 결과값
+#	result	cnt	avg	min	max
+1	Pass	11	81.63636363636364	62	99
+2	Fail	4	50.5	45	56
