@@ -61,7 +61,7 @@ with DAG(
             with (
                 format              = 'PARQUER',
                 parquet_compression = 'SNAPPY',
-                external_location   = {{ params.silver_path }},
+                external_location   = '{{ params.silver_path }}',
                 partitioned_by      = ARRAY['dt','hr']
             ) As
             Select 
@@ -78,10 +78,10 @@ with DAG(
                 cast(year || '-' || month || '-' || day as VARCHAR) as dt,
                 hour as hr
             from {{ params.database_bronze }}.raw_bronze_tbl
-            where   year  = {{ execution_date.format('YYYY') }}
-                and month = {{ execution_date.format('MM') }}
-                and day   = {{ execution_date.format('DD') }}
-                and hour  = {{ execution_date.format('HH') }}
+            where   year  = '{{ execution_date.format('YYYY') }}'
+                and month = '{{ execution_date.format('MM') }}'
+                and day   = '{{ execution_date.format('DD') }}'
+                and hour  = '{{ execution_date.format('HH') }}'
 
         ''',
         database= DATABASE_SILVER,
@@ -89,8 +89,9 @@ with DAG(
             'database_bronze':DATABASE_BRONZE,
             'database_silver':DATABASE_SILVER,
             'tbl_nm':SILVER_TBL_NAME,
-            'silver_path':ATHENA_RESULTS
-        }
+            'silver_path':SILVER_S3_PATH
+        },
+        output_location = ATHENA_RESULTS 
 
     )
 
