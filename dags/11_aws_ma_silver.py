@@ -75,7 +75,7 @@ with DAG(
                 data.store_id,
                 source_ip,
                 user_agent,
-                cast(year || '-' || 'month' || '-' || day as VARCHAR) as dt,
+                cast(year || '-' || month || '-' || day as VARCHAR) as dt,
                 hour as hr
             from {{ params.DATABASE_BRONZE }}.raw_bronze_tbl
             where   year  = {{ execution_date.format('YYYY') }}
