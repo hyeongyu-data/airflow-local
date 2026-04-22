@@ -77,7 +77,7 @@ with DAG(
                 user_agent,
                 cast(year || '-' || month || '-' || day as VARCHAR) as dt,
                 hour as hr
-            from {{ params.DATABASE_BRONZE }}.raw_bronze_tbl
+            from {{ params.database_bronze }}.raw_bronze_tbl
             where   year  = {{ execution_date.format('YYYY') }}
                 and month = {{ execution_date.format('MM') }}
                 and day   = {{ execution_date.format('DD') }}
