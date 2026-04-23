@@ -81,7 +81,7 @@ def _searching_proc(**kwargs):
     # df -> 2차원/매트릭스, series -> 1차원/백터, 0차원 -> 값 / 스칼라
     out_of_data = df[ df['temperature'] >= 230 ]
     if len(out_of_data):
-        print('이상 온도 감지 건수':len(out_of_data))
+        print('이상 온도 감지 건수',len(out_of_data))
         # 차후 오브별(장비별) 발생 건수 추출 가능 -> 리뷰때 검토
         
 
