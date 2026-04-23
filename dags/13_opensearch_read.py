@@ -46,9 +46,15 @@ def _searching_proc(**kwargs):
     # 4-1-3. 검색 요청
     # 인덱스 정보 + 상세 조건
     response = client.search(index=index_name, body=query)
-    print(response)
+    print('검색결과', response)
+    hits = response['hits']['hits']
 
     # 4-1-4. 나온 결과 체크, 필요시 전처리등
+    if not hits:
+        print('조회 결과 없음')
+        return
+    else:
+        print( '조회 결과 수', len(hits) )
 
     # 4-1-5. 분석 -> 요구사항(평균 온도, 최대 진동등 계산), 이상탐지(허용범위 이상인 경우)
 
