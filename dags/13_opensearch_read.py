@@ -18,11 +18,12 @@ print(HOST,AUTH)
 
 # 4-1. opensearch를 통해 검색 후 결과 획득 콜백함수( _searching_proc )
 def _searching_proc(**kwargs):
+
     pass
 
 # 3. DAG 정의
 with DAG(
-    dag_id      = "13_opensearch_ready", 
+    dag_id      = "13_opensearch_read", 
     description = "검색엔진에 대해 질의 후 결과 획득",
     default_args= {
         'owner'             : 'de_2team_manager',        
@@ -30,7 +31,7 @@ with DAG(
         'retry_delay'       : timedelta(minutes=1)
     },
     schedule_interval = '*/10 * * * *',
-    start_date  = pendulum.datetime(26,1,1,tz="Asis/Seoul"), # 서울 시간대 1월 1일
+    start_date  = pendulum.datetime(26,1,1,tz="Asia/Seoul"), # 서울 시간대 1월 1일
     catchup     = False,
     tags        = ['aws', 'opensearch'],
 ) as dag:
