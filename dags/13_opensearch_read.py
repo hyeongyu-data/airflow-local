@@ -62,7 +62,7 @@ def _searching_proc(**kwargs):
     data = [ hit['_source'] for hit in hits ] # 원(raw) data 획득 > dict 형태
     # data -> [ {}, {}, {}, .., {} ]
     df   = pd.DataFrame(data)
-    print( df.sapmle(1) ) # 샘플 1개 출력
+    print( df.sample(1) ) # 샘플 1개 출력
 
     # 4-1-6. 분석 결과 출력
     pass
