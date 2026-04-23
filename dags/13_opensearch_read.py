@@ -14,11 +14,45 @@ from airflow.models import Variable
 # HOST, AUTH, 인덱스(상황에 따라 별도 구성가능함) -> 검색어/패턴으로 구성/고정
 HOST = Variable.get("OPENSEARCH_HOST")
 AUTH = (Variable.get("AUTH_NAME"),Variable.get("AUTH_PW"))
-print(HOST,AUTH)
+index_name = 'factory-45-sensor-v1' # 검색어 -> 인덱스 정보
+
 
 # 4-1. opensearch를 통해 검색 후 결과 획득 콜백함수( _searching_proc )
 def _searching_proc(**kwargs):
+    # 4-1-1. 클라이언트 연결
+    client = OpenSearch(
+        hosts         = [{"host": HOST, "port": 443}], # https -> 443
+        http_auth     = AUTH,
+        http_compress = True,
+        use_ssl       = True,
+        verify_certs  = True,
+        ssl_assert_hostname = False,
+        ssl_show_warn = False
+    )
+    # 4-1-2. opensearch용 쿼리 구성
+    #        Query DSL : JSON으로 작성하여 SQL에 대응하는 개념
+    #       https://docs.opensearch.org/latest/query-dsl/
+    # 검색 엔진에 해당 인덱스로 검색 실시 -> 요청시간 기준 10분전부터 가져온다, 최대 1000개
+    query = {
+        "size":1000,
+        "query": {
+            "range":{
+                "timestamp":{
+                    "gte":"now-120m"  # greater then or equal ( >= ), now-10m: 현재로부터 10분전
+                }
+            }
+        }
+    }
+    # 4-1-3. 검색 요청
+    # 인덱스 정보 + 상세 조건
+    response = client.search(index=index_name, body=query)
+    print(response)
 
+    # 4-1-4. 나온 결과 체크, 필요시 전처리등
+
+    # 4-1-5. 분석 -> 요구사항(평균 온도, 최대 진동등 계산), 이상탐지(허용범위 이상인 경우)
+
+    # 4-1-6. 분석 결과 출력
     pass
 
 # 3. DAG 정의
